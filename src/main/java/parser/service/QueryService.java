@@ -11,9 +11,10 @@ import java.util.ArrayList;
 
 @Service
 public class QueryService {
-    ArrayList<String> arr = new ArrayList<>();
+
 
     public ArrayList<String> parsingList(String query) throws IOException{
+        ArrayList<String> arr = new ArrayList<>();
         query.trim().replaceAll(" ","+");
         Double result = 0.0;
         try {

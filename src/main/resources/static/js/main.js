@@ -1,4 +1,10 @@
 $('.btn').click(function(e) {
+
+    var container = $('.listCost');
+
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
     e.preventDefault();
     var search = $('.searchInput').val();
     $.ajax({
@@ -11,12 +17,15 @@ $('.btn').click(function(e) {
         }),
         success: function (data) {
             console.log(data);
+            // var tagP = $('.listCost');
+            // tagP.innerHTML = '';
             // $(".query").text(search);
+            $(".listCost").children("span").remove();
             var number = parseInt(data[107]).toFixed(2)
             $(".cost").text(number);
 
-            for(var i = 1; i <= 100; i++) {
-                var newElemnt = '<span>'+i+' '+data[i]+'<br></span>';
+            for(var i = 0; i < 100; i++) {
+                var newElemnt = '<span>'+(i+1)+' '+data[i]+'<br></span>';
                 $('.listCost').append(newElemnt);
             }
 
