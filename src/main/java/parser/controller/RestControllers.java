@@ -11,6 +11,7 @@ import parser.model.Query;
 import parser.service.QueryService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 @RestController
@@ -19,10 +20,11 @@ public class RestControllers {
     QueryService service;
 
     @PostMapping("/search")
-    public ResponseEntity<Query> getUserById(@RequestBody Query query) throws IOException {
-        String mess = service.parsing(query.getQuery());
-        Query query1 = new Query();
-        query1.setQuery(mess);
-        return new ResponseEntity<Query>(query1, HttpStatus.OK);
+    public ResponseEntity<ArrayList<String>> getUserById(@RequestBody Query query) throws IOException {
+        ArrayList<String> arr = new ArrayList<>();
+
+        arr = service.parsingList(query.getQuery());
+
+        return new ResponseEntity<ArrayList<String>>(arr, HttpStatus.OK);
     }
 }

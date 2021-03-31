@@ -11,8 +11,15 @@ $('.btn').click(function(e) {
         }),
         success: function (data) {
             console.log(data);
-            $(".query").text(search);
-            $(".cost").text(data.query);
+            // $(".query").text(search);
+            var number = parseInt(data[107]).toFixed(2)
+            $(".cost").text(number);
+
+            for(var i = 1; i <= 100; i++) {
+                var newElemnt = '<span>'+i+' '+data[i]+'<br></span>';
+                $('.listCost').append(newElemnt);
+            }
+
         }
     })
 })
