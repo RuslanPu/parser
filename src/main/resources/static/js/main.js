@@ -21,10 +21,11 @@ $('.btn').click(function(e) {
             // tagP.innerHTML = '';
             // $(".query").text(search);
             $(".listCost").children("span").remove();
-            var number = parseInt(data[107]).toFixed(2)
+            var number = parseInt(data[data.length-1]).toFixed(2)
             $(".cost").text(number);
+            console.log(data.length);
 
-            for(var i = 0; i < 100; i++) {
+            for(var i = 0; i < data.length - 1; i++) {
                 var newElemnt = '<span>'+(i+1)+' '+data[i]+'<br></span>';
                 $('.listCost').append(newElemnt);
             }
